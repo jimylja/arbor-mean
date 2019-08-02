@@ -109,11 +109,14 @@
       justify-content: space-around;
       color: #515151;
       font-size: 14px;
+      @media (min-width: 576px) { padding: 0 20px; }
 
       .service_item {
         width: 210px;
         margin: 0 10px;
         padding-bottom: 30px;
+        @media (min-width: 787px) { width: 45%; }
+        @media (min-width: 1029px) { width: 210px; }
         &:last-child { padding-bottom: 0px; }
         .desc_block, .thumb_block {
           width: 210px;
@@ -133,6 +136,7 @@
               width: 100%;
               border: 0.25px solid #a5a5a5;
               margin: 5px 0;
+              @media (min-width: 576px) { margin: 15px 0; }
             }
           }
         }
@@ -165,6 +169,7 @@
         .methods {
           margin: 0 auto;
           padding: 0 10px;
+          @media (min-width: 576px) { width: 50%; }
           span {
             display: inline-block;
             padding: 5px 0;
@@ -186,6 +191,8 @@
       }
       .contacts_block {
         margin: 10px 0;
+        @media (min-width: 768px) { padding-bottom: 35px; }
+
         .contacts {
           * {
             display: block;
@@ -219,5 +226,31 @@
       }
     }
   }
-
 }
+
+#sending_payment {
+  @media (min-width: 576px) {
+    .ribbon_stripe { left: -20px; }
+  }
+  @media (min-width: 768px) {
+    .category_content {
+      flex-wrap: nowrap;
+      padding-top: 70px;
+    };
+    .ribbon_stripe{
+      position: absolute;
+      top: -1px;
+    }
+    #sending .ribbon { left: 20px; }
+    #payment .ribbon {
+      left: unset;
+      right: -20px;
+      transform: rotate(180deg);
+      -webkit-box-shadow: -2px -2px 5px 0px rgba(0,0,0,0.75), inset 0px -20px 40px -10px rgba(0,0,0,0.2);
+      -moz-box-shadow: -2px -2px 5px 0px rgba(0,0,0,0.75), inset 0px -20px 40px -10px rgba(0,0,0,0.2);
+      box-shadow: -2px -2px 5px 0px rgba(0,0,0,0.75), inset 0px -20px 40px -10px rgba(0,0,0,0.2);
+      span { transform: rotate(180deg); }
+    }
+  }
+}
+
