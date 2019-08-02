@@ -1,0 +1,11 @@
+@import '../.../../../../styles.scss';
+.main-wrapper {
+  background-image: url('../../../assets/bg_new.png');
+  background-color: #353535;
+  background-repeat: repeat;
+  width: 100%;
+  color: #fff;
+  @media (min-width: 576px) {
+    padding-top: 20px;
+  }
+}

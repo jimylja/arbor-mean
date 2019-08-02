@@ -1,0 +1,111 @@
+@import '../../../styles.scss';
+
+.header {
+  margin-bottom: 30px;
+  background: url(../../../assets/header_bg_repeat.png);
+  position: relative;
+  height: 110px;
+  &:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background-image: url(../../../assets/triangles.png);
+  }
+  .social {
+    position: absolute;
+    right: 2%;
+    top: 20px;
+    a {
+      margin: 0;
+      display: block;
+      text-shadow: 2px 2px 2px rgba(115, 111, 111, 1);
+      &:hover i { color: #b3b1b1; }
+    }
+  }
+  .logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 35px;
+
+    .brand{
+      font-family: 'Montserrat', sans-serif;
+      text-shadow: 2px 2px 2px rgba(115, 111, 111, 1);
+      font-weight: 200;
+      .brand_name {
+        display: block;
+        text-transform: uppercase;
+        font-size: 36px;
+        height: 37px;
+        line-height: 37px;
+        font-weight: 200;
+      }
+    }
+  }
+  @media(min-width: 576px) {
+    height: 150px;
+    .logo { padding-bottom: 20px; }
+    .menu { display: block; }
+    .social {
+      top: 15px;
+      a { display: inline-block; }
+    }
+  }
+  @media (min-width: 768px ){
+    .content_wraper {
+      padding-top: 50px;
+      display: flex;
+    }
+    .menu {
+      display: block;
+      width: 70%;
+      padding-top: 30px;
+    }
+    .logo {
+      width: 30%;
+      padding-top: 5px;
+    }
+  }
+}
+
+/**********
+MAIN_MENU
+***********/
+.menu {
+  display:none;
+  height: 38px;
+  line-height: 39px;
+  a {
+    padding: 5px 10px;
+
+    .home:before{ content: "\f015"; }
+    .contact_us:before{ content: "\f098"; }
+    .briefcase:before{ content: "\f0b1"; }
+    .image:before{ content: "\f03e"; }
+    .truck:before{ content: "\f0d1"; }
+    .credit-card:before{ content: "\f09d"; }
+
+    .menu_icon{
+      color: #fff;
+      text-shadow: 2px 2px 5px rgb(67, 66, 66);
+      position: relative;
+      &::before{
+        font-family: FontAwesome;
+        font-size: 24px;
+        position: absolute;
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+        top: -40px;
+      }
+    }
+
+    &:hover {
+      .menu_icon {
+        color: #b3b1b1;
+      }
+    }
+  }
+}
