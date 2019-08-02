@@ -1,6 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const app = express();
+
+//Database connection
+mongoose.connect('mongodb://admin_arbor:niBleI_2@ds111993.mlab.com:11993/arbor', { useNewUrlParser: true })
+  .then(() => { console.log("Connected to database!"); })
+  .catch(() => { console.log("Connection failed!"); });
+mongoose.connection
+  .on('error', error => console.log(error))
+  .on('close', () => console.log('Database conection closed.'))
+  .once('open', () => {
+    const info = mongoose.connections[0];
+    console.log(`Conected to ${info.host}:${info.port}/${info.name}`);
+  });
 
 //Headers
 app.use((req, res, next) => {
