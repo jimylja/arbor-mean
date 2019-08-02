@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@import './normalize.scss';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=cyrillic');
+
+@font-face {
+	font-family:'FontAwesome';
+	src:url('https://static.hsappstatic.net/content_shared_assets/static-1.3779/fonts/fontawesome-webfont.eot?v=4.1.0');
+	src:url('https://static.hsappstatic.net/content_shared_assets/static-1.3779/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),url('https://static.hsappstatic.net/content_shared_assets/static-1.3779/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),url('https://static.hsappstatic.net/content_shared_assets/static-1.3779/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),url('https://static.hsappstatic.net/content_shared_assets/static-1.3779/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+	font-weight:normal;
+	font-style:normal;
+}
+
+*{
+  text-decoration: none;
+	box-sizing: border-box;
+  text-align: center;
+  a { text-decoration: none; }
+}
+
+.red_font {color:#e10d0d;}
+.pink_font{color:#c116cc;}
+.blue_font{color:#3e22cb;}
+
+.red_bg{background-color: #d43259}
+.softgreen_bg{background-color:#a6b938 }
+.brown_bg{background-color:#d68335 }
+.blue_bg{background-color:#4c96cb }
+.green_bg{background-color:#44d34e }
+.red_bg{background-color:#b81616 }
+.olive_bg {background-color:#aec81e}
+.violet_bg{background-color:#9c1ec6};
+a {
+  text-decoration: none;
+}
+
+.content_wraper{
+  width: 95%;
+  max-width: 960px;
+  position: relative;
+  margin: 0 auto;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.social a {
+  display: inline-block;
+  font-size: 24px;
+  padding: 0 5px;
+  color: #e3eef2;
+}
