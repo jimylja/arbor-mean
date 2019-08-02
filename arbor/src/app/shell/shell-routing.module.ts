@@ -10,11 +10,6 @@ const routes: Routes = [
       {
         path: 'admin-panel',
       },
-      {
-        path: 'bd',
-        pathMatch: 'full',
-        loadChildren: '../main-page/main-page.module#MainPageModule'
-      }
     ]
   }
 ];
