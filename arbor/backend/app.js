@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const routes = require('./routes');
 
 //Database connection
 mongoose.connect('mongodb://admin_arbor:niBleI_2@ds111993.mlab.com:11993/arbor', { useNewUrlParser: true })
@@ -30,5 +31,6 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+app.use('/posts', routes.post);
 
 module.exports = app;
