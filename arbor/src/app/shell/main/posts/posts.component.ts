@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, HostBinding } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { PostsService } from '../../../services/posts.service';
+import { Post } from '../../../models/post';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -10,7 +11,7 @@ import { PostsService } from '../../../services/posts.service';
 export class PostsComponent implements OnInit {
   @HostBinding('class') classes = 'category_content';
   constructor( private route: ActivatedRoute, private postService: PostsService) { }
-  posts: Array<any>;
+  posts: Post[];
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {

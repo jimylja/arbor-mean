@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CategoriesService } from '../../../../services/categories.service';
-import { Categories } from '../../../../models/categories';
+import { Category } from '../../../../models/category';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -8,7 +8,7 @@ import { Categories } from '../../../../models/categories';
 })
 export class CategoriesComponent implements OnInit {
   @Output() categoryChange = new EventEmitter();
-  categoriesList: Categories[];
+  categoriesList: Category[];
 
   categoriesIcons = {
     metrics: 'fas fa-clipboard-list',
