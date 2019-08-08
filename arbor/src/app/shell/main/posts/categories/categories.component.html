@@ -2,40 +2,12 @@
   <span class="gallery_name">Категорії</span>
 </div>
 <ul class="gallery_menu">
-  <a [routerLink]="['/posts', 'metrics']" class="gallery_menu_items" name="Метрики">
+  <a *ngFor="let category of categoriesList"
+      [routerLink]="['/posts', category.slug]" class="gallery_menu_items">
     <li>
-      <i class="item_icon fas fa-clipboard-list"></i>
-      <span class="item_title">Метрики</span>
-    </li>
-  </a>
-  <a routerLink="/posts/frames" class="gallery_menu_items" name="Фоторамки">
-    <li>
-      <i class="item_icon fas fa-image"></i>
-      <span class="item_title">Фоторамки</span>
-    </li>
-  </a>
-  <a routerLink="/posts/toys" class="gallery_menu_items" name="Іграшки">
-    <li>
-      <i class="item_icon fab fa-avianex"></i>
-      <span class="item_title">Іграшки</span>
-    </li>
-  </a>
-  <a routerLink="/posts/weding" class="gallery_menu_items" name="Весільний декор">
-    <li>
-      <i class="item_icon fab fa-slideshare"></i>
-      <span class="item_title">Весільний декор</span>
-    </li>
-  </a>
-  <a routerLink="/posts/letters" class="gallery_menu_items" name="Букви">
-    <li>
-      <i class="item_icon fab fa-sass"></i>
-      <span class="item_title">Слова, букви</span>
-    </li>
-  </a>
-  <a routerLink="/posts/other" class="gallery_menu_items" name="Різне">
-    <li>
-      <i class="item_icon fas fa-puzzle-piece"></i>
-      <span class="item_title">Різне</span>
+      <i class="item_icon {{categoriesIcons[category.slug]}}"></i>
+      <span class="item_title">{{category.name}}</span>
     </li>
   </a>
 </ul>
+

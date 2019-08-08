@@ -5,7 +5,7 @@
   </div>
   <div class="gallery_photos">
     <div class="gallery_slider">
-      <ng-container *ngIf="!posts">
+      <ng-container *ngIf="posts?.length <= 0">
           <div class="spinner"></div>
       </ng-container>
       <ng-container *ngIf="posts?.length>0">

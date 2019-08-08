@@ -14,6 +14,9 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
+        if ( this.posts ) {
+          this.posts = [];
+        }
         console.log(params.category);
         this.postService.getCategoryPosts(params.category).subscribe(
           data => {
