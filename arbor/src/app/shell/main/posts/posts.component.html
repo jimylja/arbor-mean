@@ -5,17 +5,15 @@
   </div>
   <div class="gallery_photos">
     <div class="gallery_slider">
-      <a href="https://picsum.photos/id/439/200/200">
-        <div class="thumb_block">
-          <img class="thumb" src="https://picsum.photos/id/439/200/200" alt="gallery image">
+      <ng-container *ngIf="!posts">
+          <div class="spinner"></div>
+      </ng-container>
+      <ng-container *ngIf="posts?.length>0">
+        <div *ngFor="let post of posts" class="thumb_block">
+          <img class="thumb" src="{{post.thumb}}" alt="gallery image">
         </div>
-      </a>
-      <a href="https://picsum.photos/id/439/200/200">
-        <div class="thumb_block">
-          <img class="thumb" src="https://picsum.photos/id/439/200/200" alt="gallery image">
-        </div>
-      </a>
-    </div>
+      </ng-container>
+     </div>
     <div id="button" class="button olive_bg">Замовити</div>
   </div>
 </div>

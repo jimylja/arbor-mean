@@ -10,7 +10,7 @@ import { PostsService } from '../../../services/posts.service';
 export class PostsComponent implements OnInit {
   @HostBinding('class') classes = 'category_content';
   constructor( private route: ActivatedRoute, private postService: PostsService) { }
-
+  posts: Array<any>;
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
@@ -18,6 +18,7 @@ export class PostsComponent implements OnInit {
         this.postService.getCategoryPosts(params.category).subscribe(
           data => {
             console.log(data);
+            this.posts = [...data];
           }
         );
       }
