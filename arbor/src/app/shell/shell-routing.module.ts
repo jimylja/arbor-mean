@@ -18,9 +18,9 @@ const routes: Routes = [
       {
         path: 'posts',
         component: PostsComponent,
-        children: [
-          {path: ':category', component: PostsComponent}
-        ]
+      },
+      {
+        path: 'posts/:category', component: PostsComponent
       }
     ]
   }
