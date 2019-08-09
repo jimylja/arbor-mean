@@ -1,0 +1,45 @@
+@import '../../../../../styles.scss';
+
+.gallery_menu {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0;
+  .gallery_menu_items{
+    padding: 0 3px;
+    color: #515151;
+    display: inline-block;
+    text-decoration: none;
+    &:hover { font-weight: 600; }
+    .item_icon { font-size: 2.25em; }
+    .item_title {
+      text-align: center;
+      line-height: 15px;
+      display: block;
+      max-width: 50px;
+      font-size: 11px;
+      padding: 1px;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .gallery_menu {
+    padding-left: 60px;
+    padding-top: 30px;
+    list-style-type: disc;
+    display: block;
+    .gallery_menu_items {
+      display: block;
+      .item_icon{display: none!important}
+      .item_title {
+        display: block;
+        max-width: unset;
+        text-align: left;
+        line-height: 30px;
+        font-size: 16px;
+        padding: 1px;
+      }
+    }
+  }
+}

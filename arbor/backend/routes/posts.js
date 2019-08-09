@@ -12,8 +12,8 @@ const Post = require('../models/post');
 router.get("/", (req, res) => {
   Post.find({}).populate("category", ["name", "slug"]).then(documents => {
     res.status(200).json({
-      message: "Posts fetched successfully!",
-      posts: documents
+      status: "Posts fetched successfully!",
+      data: documents
     });
   });
 });
@@ -36,8 +36,8 @@ router.get("/category/:slug", (req, res) => {
     if(err) { res.send(err);
     } else {
       res.status(200).json({
-        message: "Posts fetched successfully!",
-        posts: posts
+        status: 200,
+        data: posts
       });
     }
   }).populate("category", ["name", "slug"]);

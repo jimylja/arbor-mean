@@ -1,0 +1,13 @@
+<div class="gallery_block_title">
+  <span class="gallery_name">Категорії</span>
+</div>
+<ul class="gallery_menu">
+  <a *ngFor="let category of categoriesList"
+      [routerLink]="['/posts', category.slug]" class="gallery_menu_items">
+    <li>
+      <i class="item_icon {{categoriesIcons[category.slug]}}"></i>
+      <span class="item_title">{{category.name}}</span>
+    </li>
+  </a>
+</ul>
+

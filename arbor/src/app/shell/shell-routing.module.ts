@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ShellComponent } from './shell/shell.component';
+import { PostsComponent } from './main/posts/posts.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,17 @@ const routes: Routes = [
       {
         path: 'admin-panel',
       },
+      {
+        path: '',
+        component: PostsComponent
+      },
+      {
+        path: 'posts',
+        component: PostsComponent,
+      },
+      {
+        path: 'posts/:category', component: PostsComponent
+      }
     ]
   }
 ];
