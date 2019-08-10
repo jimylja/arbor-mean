@@ -58,7 +58,9 @@ router.get("/category/:slug", (req, res) => {
         data: posts
       });
     }
-  }).populate("category", ["name", "slug"]);
+  })
+  .populate("uploads")
+  .populate("category", ["name", "slug"]);
 })
 
 module.exports = router;

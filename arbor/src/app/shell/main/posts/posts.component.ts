@@ -22,7 +22,7 @@ export class PostsComponent implements OnInit {
         this.postService.getCategoryPosts(params.category).subscribe(
           data => {
             console.log(data);
-            this.posts = [...data];
+            this.posts = data;
           }
         );
       }

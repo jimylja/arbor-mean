@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Category = require('../models/category')
+const Upload = require('../models/upload');
 
 const postSchema = new Schema({
   title: { type: String },
@@ -13,6 +14,12 @@ const postSchema = new Schema({
     required: true,
     default: 'published'
   },
+  uploads: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Upload'
+    }
+  ],
   slider: {
     type: Boolean,
     default: false
