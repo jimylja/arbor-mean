@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { PostsComponent } from './main/posts/posts.component';
 import { PostComponent } from './main/posts/post/post.component';
 import { CategoriesComponent } from './main/posts/categories/categories.component';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CategoriesComponent } from './main/posts/categories/categories.componen
     CategoriesComponent],
   imports: [
     CommonModule,
-    ShellRoutingModule
-  ]
+    ShellRoutingModule,
+    ModalModule
+  ],
 })
 export class ShellModule { }

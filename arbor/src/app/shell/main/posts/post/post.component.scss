@@ -1,0 +1,29 @@
+.modal-button {
+  position: absolute;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 15%;
+  background-color: rgba(50, 50, 50, 0.5);
+  color: #ddd;
+  font: 1.6em sans-serif;
+  transition: background-color .4s ease;
+  &:hover {
+    background-color: rgba(50, 50, 50, 0.9);
+  }
+  &.modal-button__close {
+    top: -32px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  &.modal-button__navigation {
+    top: calc(50% - 30px);
+    width: 44px;
+    height: 60px;
+    &.next { right: 2%; }
+    &.prev { left: 2%; }
+  }
+}
