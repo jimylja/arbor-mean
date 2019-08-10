@@ -7,6 +7,7 @@ const postSchema = new Schema({
   body: { type: String },
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   owner: { type: Schema.Types.ObjectId, ref: 'User'},
+  thumb: { type: String },
   status: {
     type: String,
     enum: ['published', 'draft'],

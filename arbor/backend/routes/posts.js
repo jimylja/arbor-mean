@@ -2,21 +2,55 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
 
+ /**
+ * @swagger
+ * /posts/{id}:
+ *    get:
+ *      summary: This should return all posts or single post by ID
+ *      parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: false
+ *        description: post id
+ */
+router.get("/:id?", (req, res) => {
+  if (req.params.id) {
+    const id = req.params.id.trim().replace(/ +(?=)/g, '');
+    Post.findById(id).then(
+      document => {
+        res.status(200).json({
+          message: "Posts fetched successfully!",
+          posts: document
+        });
+      });
+  } else {
+    Post.find({}).populate("category", ["name", "slug"]).then(documents => {
+      res.status(200).json({
+        message: "Posts fetched successfully!",
+        posts: documents
+      });
+    });
+  }
+});
+
+
 /**
  * @swagger
- * /posts:
+ * /posts/{id}
  *    get:
  *      description: This should return all posts
  */
+// router.get("/:id", (req, res) => {
 
-router.get("/", (req, res) => {
-  Post.find({}).populate("category", ["name", "slug"]).then(documents => {
-    res.status(200).json({
-      message: "Posts fetched successfully!",
-      posts: documents
-    });
-  });
-});
+//   Post.findById(id).then(document => {
+//        res.status(200).json({
+//       message: "Posts fetched successfully!",
+//       posts: document
+//     });
+//   });
+// });
 
 /**
  * @swagger
