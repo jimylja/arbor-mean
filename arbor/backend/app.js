@@ -16,6 +16,9 @@ mongoose.connection
     console.log(`Conected to ${info.host}:${info.port}/${info.name}`);
   });
 
+//Static
+app.use(express.static('public'));
+
 //Headers
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
