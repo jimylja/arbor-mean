@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ModalService } from '../../../../services/modal.service';
+import { PostsService } from '../../../../services/posts.service';
+import { Post } from 'src/app/models/post';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post',
@@ -10,8 +13,10 @@ import { ModalService } from '../../../../services/modal.service';
 export class PostComponent implements OnInit, AfterViewInit {
   postId: string;
   catalogMode = false;
+  post: Post;
 
   constructor(
+    private postService: PostsService,
     private router: Router,
     private route: ActivatedRoute,
     private modalService: ModalService ) { }
@@ -21,11 +26,16 @@ export class PostComponent implements OnInit, AfterViewInit {
     if (this.router.url.includes('/posts/')) {
       this.catalogMode = true;
     }
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.postId = params.id;
-      }
-    );
+
+    this.route.params.pipe(
+      switchMap(
+        (params: Params) => {
+          this.postId = params.id;
+          return this.postService.getPost(this.postId);
+        }
+      )).subscribe(
+        postData => this.post = postData
+      );
    }
 
   ngAfterViewInit() {

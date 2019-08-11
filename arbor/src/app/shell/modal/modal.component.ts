@@ -65,8 +65,6 @@ export class ModalComponent implements OnInit, OnDestroy {
    * close modal
    */
   close(): void {
-    console.log('close from container');
-    console.log(this.element.style.display);
     this.element.style.display = 'none';
     document.body.classList.remove('modal-container-open');
   }

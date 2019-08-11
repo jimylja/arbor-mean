@@ -1,9 +1,9 @@
 <app-modal id="post" [routable]="true">
-  <h1>Pos Modal</h1>
-  {{ postId }}
-  <button class="modal-button modal-button__close" (click)="closeModal('post')">
-    <svg width="30" height="30"><g stroke="rgb(160,160,160)" stroke-width="4"><line x1="5" y1="5" x2="25" y2="25"></line><line x1="5" y1="25" x2="25" y2="5"></line></g></svg>
-  </button>
+<ng-container *ngIf="post">
+  <h1>{{post.title}}</h1>
+  <div class="modal-image-wrap">
+    <img src="http://localhost:3000/gallery/{{post.uploads[0].path}}" alt="">
+  </div>
   <ng-container *ngIf="catalogMode">
     <button class="modal-button modal-button__navigation next" (click)="nextImage()">
       <svg width="44" height="60"><polyline points="14 10 34 30 14 50" stroke="rgba(255,255,255,0.5)" stroke-width="4" stroke-linecap="butt" fill="none" stroke-linejoin="round"></polyline></svg>
@@ -12,4 +12,12 @@
       <svg width="44" height="60"><polyline points="30 10 10 30 30 50" stroke="rgba(255,255,255,0.5)" stroke-width="4" stroke-linecap="butt" fill="none" stroke-linejoin="round"></polyline></svg>
     </button>
   </ng-container>
+</ng-container>
+
+<ng-container *ngIf="!post">
+  <div class="spinner"></div>
+</ng-container>
+  <button class="modal-button modal-button__close" (click)="closeModal('post')">
+    <svg width="30" height="30"><g stroke="rgb(160,160,160)" stroke-width="4"><line x1="5" y1="5" x2="25" y2="25"></line><line x1="5" y1="25" x2="25" y2="5"></line></g></svg>
+  </button>
 </app-modal>
