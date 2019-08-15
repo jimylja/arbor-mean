@@ -18,18 +18,20 @@ const Post = require('../models/post');
 router.get("/:id?", (req, res) => {
   if (req.params.id) {
     const id = req.params.id.trim().replace(/ +(?=)/g, '');
-    Post.findById(id).then(
-      document => {
+    Post.findById(id)
+      .populate("uploads")
+      .populate("category", ["name", "slug"])
+      .then(document => {
         res.status(200).json({
           message: "Posts fetched successfully!",
-          posts: document
+          data: document
         });
       });
   } else {
     Post.find({}).populate("category", ["name", "slug"]).then(documents => {
       res.status(200).json({
         message: "Posts fetched successfully!",
-        posts: documents
+        data: documents
       });
     });
   }
@@ -58,7 +60,9 @@ router.get("/category/:slug", (req, res) => {
         data: posts
       });
     }
-  }).populate("category", ["name", "slug"]);
+  })
+  .populate("uploads")
+  .populate("category", ["name", "slug"]);
 })
 
 module.exports = router;
