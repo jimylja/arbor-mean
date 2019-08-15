@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/post');
+const path = require('path');
+const upload = require('../upload-middlware');
+const resize = require('../rezise');
 
  /**
  * @swagger
@@ -64,5 +67,15 @@ router.get("/category/:slug", (req, res) => {
   .populate("uploads")
   .populate("category", ["name", "slug"]);
 })
+
+router.post('/create', upload.single('image'), async function (req, res) {
+  const imagePath = path.join(__dirname, '/../public/gallery');
+  const fileUpload = new resize(imagePath);
+  if (!req.file) {
+    res.status(401).json({error: 'Please provide an image'});
+  }
+  const filename = await fileUpload.save(req.file.buffer);
+  return res.status(200).json({ name: filename });
+});
 
 module.exports = router;
