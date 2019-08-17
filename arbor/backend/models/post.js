@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Category = require('../models/category')
+const Upload = require('../models/upload');
 
 const postSchema = new Schema({
   title: { type: String },
-  body: { type: String },
+  thumb: {type: String},
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   owner: { type: Schema.Types.ObjectId, ref: 'User'},
   thumb: { type: String },
@@ -14,7 +15,16 @@ const postSchema = new Schema({
     required: true,
     default: 'published'
   },
-  url: { type: String }},
+  uploads: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Upload'
+    }
+  ],
+  slider: {
+    type: Boolean,
+    default: false
+  }},
   { timestamps: true }
 );
 

@@ -225,6 +225,12 @@
         }
       }
     }
+    @media (min-width: 576px) {
+      app-posts.category_content { flex-direction: row-reverse; }
+    }
+    @media (min-width: 768px) {
+      app-posts.category_content { flex-wrap: nowrap; }
+    }
   }
 }
 

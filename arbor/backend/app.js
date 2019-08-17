@@ -17,7 +17,8 @@ mongoose.connection
   });
 
 //Static
-app.use(express.static('public'));
+var path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Headers
 app.use((req, res, next) => {
@@ -35,5 +36,10 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use('/posts', routes.post);
+
+//for testing
+app.get('/create', async function (req, res) {
+  await res.sendFile(path.join(__dirname+'/public/index.html'));
+});
 
 module.exports = app;

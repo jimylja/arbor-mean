@@ -1,0 +1,22 @@
+<app-categories class="gallery_block_menu"></app-categories>
+<div class="gallery_block_photos">
+  <div class="gallery_block_title">
+    <span class="gallery_name">Метрики</span>
+  </div>
+  <div class="gallery_photos">
+    <div class="gallery_slider">
+      <ng-container *ngIf="posts?.length <= 0">
+          <div class="spinner"></div>
+      </ng-container>
+      <ng-container *ngIf="posts?.length>0">
+        <a *ngFor="let post of posts" [routerLink]="post._id">
+          <div class="thumb_block">
+            <img class="thumb" src="{{post.thumb}}" alt="gallery image">
+          </div>
+      </a>
+      </ng-container>
+     </div>
+    <div id="button" class="button olive_bg">Замовити</div>
+  </div>
+</div>
+<router-outlet></router-outlet>

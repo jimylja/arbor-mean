@@ -6,6 +6,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SliderComponent } from './slider/slider.component';
 import { MainComponent } from './main/main.component';
+import { PostsComponent } from './main/posts/posts.component';
+import { PostComponent } from './main/posts/post/post.component';
+import { CategoriesComponent } from './main/posts/categories/categories.component';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +17,14 @@ import { MainComponent } from './main/main.component';
     HeaderComponent,
     FooterComponent,
     SliderComponent,
-    MainComponent],
+    MainComponent,
+    PostsComponent,
+    PostComponent,
+    CategoriesComponent],
   imports: [
     CommonModule,
-    ShellRoutingModule
-  ]
+    ShellRoutingModule,
+    ModalModule
+  ],
 })
 export class ShellModule { }
