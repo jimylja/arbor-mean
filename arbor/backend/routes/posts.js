@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+
 const Post = require('../models/post');
+const Upload = require('../models/upload');
+const upload = require('../upload-middlware');
 
  /**
  * @swagger
@@ -64,5 +68,41 @@ router.get("/category/:slug", (req, res) => {
   .populate("uploads")
   .populate("category", ["name", "slug"]);
 })
+
+
+router.post('/create', upload.single("image"),
+  async(req, res, next) => {
+
+    if (!req.file) {
+      res.status(401).json({error: 'Please provide an image'});
+    }
+
+    const resizedImageBuf = await require('sharp')(req.file.path)
+      .resize(210, 210)
+      .toBuffer();
+
+    const upload = await Upload.create({
+      path: req.file.originalname
+    })
+
+    const post = new Post({
+      title: 'Test post',
+      thumb: resizedImageBuf.toString('base64'),
+      slider: true,
+      status: 'published',
+      category: "5d4ebfdc7c213e60b8edf63c",
+      uploads: [upload._id]
+    });
+    post.save().then(createdPost => {
+      res.status(201).json({
+        message: "Post added successfully",
+        post: {
+          ...createdPost,
+          id: createdPost._id
+        }
+      });
+    });
+  }
+);
 
 module.exports = router;
