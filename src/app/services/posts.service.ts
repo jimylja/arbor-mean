@@ -15,7 +15,7 @@ export class PostsService {
    * Method return list of posts
    * @returns list of all classes
    */
-  public getCategoryPosts(slug: string): Observable<Post[]> {
+  public getCategoryPosts(slug: string = 'other'): Observable<Post[]> {
     return this.http.get(`/posts/category/${slug}`)
     .pipe(
       map(
