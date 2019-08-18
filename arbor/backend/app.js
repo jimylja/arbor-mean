@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json({ limit: '15mb' }));
 app.use(bodyParser.urlencoded({ limit: '15mb', extended: true, parameterLimit: 50000 }));
 app.use('/posts', routes.post);
+app.use('/category', routes.category);
 
 //for testing
 app.get('/create', async function (req, res) {
