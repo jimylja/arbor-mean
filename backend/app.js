@@ -18,7 +18,8 @@ mongoose.connection
 
 //Static
 var path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/../dist/arbor'));
+app.use(express.static(__dirname + '/public'));
 
 //Headers
 app.use((req, res, next) => {
@@ -39,9 +40,8 @@ app.use(bodyParser.urlencoded({ limit: '15mb', extended: true, parameterLimit: 5
 app.use('/posts', routes.post);
 app.use('/category', routes.category);
 
-//for testing
-app.get('/create', async function (req, res) {
-  await res.sendFile(path.join(__dirname+'/public/index.html'));
+app.get('/', function(req,res) {
+  res.sendFile(path.join(__dirname+'/../dist/arbor/index.html'));
 });
 
 module.exports = app;
