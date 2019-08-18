@@ -7,3 +7,9 @@ node_js:
 branches:
   only:
     - heroku-deploy
+
+deploy:
+  provider: heroku
+  app: arbor
+  api_key:
+    secure: 8ba75b24-a9c0-429b-afcf-118bbaed73f1
