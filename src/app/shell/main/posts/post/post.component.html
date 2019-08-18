@@ -2,7 +2,7 @@
 <ng-container *ngIf="post">
   <h1>{{post.title}}</h1>
   <div class="modal-image-wrap">
-    <img src="http://localhost:3000/gallery/{{post.uploads[0].path}}" alt="">
+    <img src="/gallery/{{post.uploads[0].path}}" alt="">
   </div>
   <ng-container *ngIf="catalogMode">
     <button class="modal-button modal-button__navigation next" (click)="nextImage()">
