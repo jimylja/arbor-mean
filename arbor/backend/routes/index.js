@@ -1,4 +1,5 @@
 const post = require('./posts');
+const category = require('./category')
 module.exports = {
-    post,
+    post, category
 };

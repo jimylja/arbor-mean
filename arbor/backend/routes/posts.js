@@ -19,6 +19,7 @@ const upload = require('../upload-middlware');
  *        required: false
  *        description: post id
  */
+
 router.get("/:id?", (req, res) => {
   if (req.params.id) {
     const id = req.params.id.trim().replace(/ +(?=)/g, '');
@@ -41,7 +42,6 @@ router.get("/:id?", (req, res) => {
   }
 });
 
-
 /**
  * @swagger
  * /posts/category/{slug}:
@@ -55,6 +55,7 @@ router.get("/:id?", (req, res) => {
  *        required: true
  *        description: category slug
  */
+
 router.get("/category/:slug", (req, res) => {
   Post.findByCatSlug(req.params.slug, (err, posts) => {
     if(err) { res.send(err);
@@ -70,7 +71,7 @@ router.get("/category/:slug", (req, res) => {
 })
 
 
-router.post('/create', upload.single("image"),
+router.post('/', upload.single("image"),
   async(req, res, next) => {
 
     if (!req.file) {
@@ -82,15 +83,14 @@ router.post('/create', upload.single("image"),
       .toBuffer();
 
     const upload = await Upload.create({
-      path: req.file.originalname
+      path: req.file.filename
     })
-
     const post = new Post({
-      title: 'Test post',
-      thumb: resizedImageBuf.toString('base64'),
-      slider: true,
-      status: 'published',
-      category: "5d4ebfdc7c213e60b8edf63c",
+      title: req.body.title,
+      thumb: `data:${req.file.mimetype};base64,${resizedImageBuf.toString('base64')}`,
+      slider: req.body.slider,
+      status: req.body.status,
+      category: req.body.category,
       uploads: [upload._id]
     });
     post.save().then(createdPost => {

@@ -63,4 +63,18 @@ export class PostsService {
     );
   }
 
+  public addPost(post: any) {
+    const postData = new FormData();
+    postData.append('title', post.title);
+    postData.append('category', post.category);
+    postData.append('image', post.image as File, post.title);
+    postData.append('slider', 'true');
+    postData.append('status', post.status);
+
+    return this.http.post('/posts', postData).subscribe(
+      (response: {status: number, data: Post}) => {
+        return response.data;
+      }
+    );
+  }
 }
