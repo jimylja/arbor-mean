@@ -9,7 +9,8 @@ const MIME_TYPE_MAP = {
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const imagePath = path.join(__dirname, '/public/gallery');
+    const imagePath = path.join(__dirname, '/public/gallery/');
+    console.log(imagePath);
     const isValid = MIME_TYPE_MAP[file.mimetype];
     let error = new Error("Invalid mime type");
     if (isValid) {
