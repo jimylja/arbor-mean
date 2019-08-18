@@ -71,7 +71,7 @@ router.get("/category/:slug", (req, res) => {
 })
 
 
-router.post('/create', upload.single("image"),
+router.post('/', upload.single("image"),
   async(req, res, next) => {
 
     if (!req.file) {
@@ -83,14 +83,13 @@ router.post('/create', upload.single("image"),
       .toBuffer();
 
     const upload = await Upload.create({
-      path: req.file.originalname
+      path: req.file.filename
     })
-
     const post = new Post({
-      title: 'Test post',
-      thumb: resizedImageBuf.toString('base64'),
-      slider: true,
-      status: 'published',
+      title: req.body.title,
+      thumb: `data:${req.file.mimetype};base64,${resizedImageBuf.toString('base64')}`,
+      slider: req.body.slider,
+      status: req.body.status,
       category: "5d4ebfdc7c213e60b8edf63c",
       uploads: [upload._id]
     });

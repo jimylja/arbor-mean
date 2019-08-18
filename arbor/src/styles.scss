@@ -1,6 +1,7 @@
 @import './normalize.scss';
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,800');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=cyrillic');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @font-face {
 	font-family:'FontAwesome';
@@ -71,3 +72,6 @@ a {
     no-repeat
     center center;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
