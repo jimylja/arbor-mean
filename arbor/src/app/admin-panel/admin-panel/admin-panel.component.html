@@ -12,7 +12,17 @@
       <img [src]="imagePreview" [alt]="newPostForm.value.title">
     </div>
     <div>
-      <mat-checkbox>Слайдер</mat-checkbox>
+      <mat-checkbox formControlName="slider">Слайдер</mat-checkbox>
+    </div>
+    <div>
+    <mat-form-field>
+      <mat-label>Категорія</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categories" [value]="category._id">
+              {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <button mat-raised-button color="accent" (click)="onSavePost('published')" type="submit">Опублікувати</button>
     <button mat-raised-button (click)="onSavePost('draft')" type="submit">Чернетка</button>

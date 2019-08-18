@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostsService } from '../../services/posts.service';
+import { CategoriesService } from '../../services/categories.service';
+import { Category } from '../../models/category';
 @Component({
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
@@ -14,10 +16,15 @@ export class AdminPanelComponent implements OnInit {
   isLoading = false;
   form: FormGroup;
   imagePreview: any;
+  categories: Category[];
 
-  constructor(private postsService: PostsService) { }
+  constructor(
+    private categoryService: CategoriesService,
+    private postsService: PostsService
+  ) { }
 
   ngOnInit() {
+    this.getCategories();
     this.newPostForm = new FormGroup({
       title: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
@@ -28,17 +35,17 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
+  getCategories(): void {
+    this.categoryService.getCategories().subscribe(
+      data => this.categories = data
+    );
+  }
+
   onSavePost(postStatus: 'published' | 'draft') {
     this.isLoading = true;
-    this.postsService.addPost(
-      {
-        title: this.newPostForm.value.title,
-        category: {id: '5d4ec0247c213e60b8edf646'},
-        slider: true,
-        status: postStatus,
-        image: this.newPostForm.value.image
-      },
-    );
+    const postData = this.newPostForm.value;
+    postData.status = postStatus;
+    this.postsService.addPost(postData);
   }
 
   onImagePicked(event: Event) {

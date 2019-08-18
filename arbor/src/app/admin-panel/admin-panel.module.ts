@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 import {
   MatInputModule,
   MatCardModule,
@@ -24,7 +25,8 @@ import { AdminPanelRoutingModule } from './admin-panel-routing.module';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ]
 })
 export class AdminPanelModule { }

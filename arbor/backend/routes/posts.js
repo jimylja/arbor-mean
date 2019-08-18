@@ -90,7 +90,7 @@ router.post('/', upload.single("image"),
       thumb: `data:${req.file.mimetype};base64,${resizedImageBuf.toString('base64')}`,
       slider: req.body.slider,
       status: req.body.status,
-      category: "5d4ebfdc7c213e60b8edf63c",
+      category: req.body.category,
       uploads: [upload._id]
     });
     post.save().then(createdPost => {
