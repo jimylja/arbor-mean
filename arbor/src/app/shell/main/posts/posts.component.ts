@@ -18,7 +18,6 @@ export class PostsComponent implements OnInit {
         if ( this.posts ) {
           this.posts = [];
         }
-        console.log('Display images form category:', params.category);
         this.postService.getCategoryPosts(params.category).subscribe(
           data => {
             console.log(data);
