@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
-  private readonly url: string = '';
+  private readonly url: string = 'http://localhost:3000';
   constructor() { }
 
   /**
