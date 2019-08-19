@@ -9,7 +9,7 @@
           <div class="spinner"></div>
       </ng-container>
       <ng-container *ngIf="posts?.length>0">
-        <a *ngFor="let post of posts" [routerLink]="post._id">
+        <a *ngFor="let post of posts" [routerLink]="'/posts/'+post.category.slug+'/'+post._id">
           <div class="thumb_block">
             <img class="thumb" src="{{post.thumb}}" alt="gallery image">
           </div>
