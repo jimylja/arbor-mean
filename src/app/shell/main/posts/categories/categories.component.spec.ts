@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CategoriesComponent } from './categories.component';
 
@@ -8,7 +10,8 @@ describe('CategoriesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CategoriesComponent ]
+      declarations: [ CategoriesComponent ],
+      imports: [ RouterTestingModule, HttpClientTestingModule ]
     })
     .compileComponents();
   }));

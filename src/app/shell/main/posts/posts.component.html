@@ -6,7 +6,7 @@
   <div class="gallery_photos">
     <div class="gallery_slider">
       <ng-container *ngIf="posts?.length <= 0">
-          <div class="spinner"></div>
+        <div class="spinner"></div>
       </ng-container>
       <ng-container *ngIf="posts?.length>0">
         <a *ngFor="let post of posts" [routerLink]="'/posts/'+post.category.slug+'/'+post._id">
